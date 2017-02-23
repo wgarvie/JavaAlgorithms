@@ -14,4 +14,11 @@ public class InsertionSort {
 		}
 	}
 	
+	public static void main(String[] args) {
+		int[] arr = {6,4,8,2};
+		Helpers.printArray(arr);
+		InsertionSort.insertionSort(arr);
+		Helpers.printArray(arr);
+	}
+	
 }
