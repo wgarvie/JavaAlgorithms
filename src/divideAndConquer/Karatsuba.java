@@ -1,4 +1,4 @@
-package math;
+package divideAndConquer;
 
 import java.math.BigInteger;
 
