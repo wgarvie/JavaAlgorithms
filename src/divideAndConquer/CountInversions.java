@@ -27,13 +27,11 @@ public class CountInversions {
 			}
 			k++;
 		}
-		for(; i <= mid; i++) {
-			merged[k] = arr[i];
-			k++;
+		while(i <= mid) {
+			merged[k++] = arr[i++];
 		}
-		for(; j < ri; j++) {
-			merged[k] = arr[j];
-			k++;
+		while(j <= ri) {
+			merged[k++] = arr[j++];
 		}
 		for(int x = 0; x < len; x++) {
 			arr[x] = merged[x];
