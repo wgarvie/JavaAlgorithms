@@ -1,70 +1,67 @@
 package divideAndConquer;
 
-import java.util.Arrays;
-
-//completed MergeSort by splitting arrays using indices
+import java.util.Random;
 
 public class MergeSort {
 	
-	public static void merge(int[] arr, int li, int mid, int ri) {
-		int len = arr.length;
-		int[] merged = new int[len];
-		for(int x = 0; x < len; x++) {
-			merged[x] = arr[x];
+	public static void merge(int[] A, int l, int m, int r) {
+		int firstHalfLength = m - l;
+		int secondHalfLength = r - m + 1;
+		int[] firstHalf = new int[firstHalfLength];
+		int[] secondHalf = new int[secondHalfLength];
+		for(int i = 0; i < firstHalfLength; i++) {
+			firstHalf[i] = A[l + i];
 		}
-		int i = li;
-		int j = mid+1;
-		int k = li;
-		while(i <= mid && j <= ri) {
-			if(arr[i] <= arr[j]) {
-				merged[k] = arr[i];
+		for(int i = 0; i < secondHalfLength; i++) {
+			secondHalf[i] = A[m + i];
+		}
+		int i = 0;
+		int j = 0;
+		for(int x = l; x <= r; x++) {
+			if(j == secondHalfLength || (i < firstHalfLength && firstHalf[i] <= secondHalf[j])){
+				A[x] = firstHalf[i];
 				i++;
-			} else{
-				merged[k] = arr[j];
+			} else {
+				A[x] = secondHalf[j];
 				j++;
 			}
-			k++;
-		}
-		while(i <= mid) {
-			merged[k++] = arr[i++];
-		}
-		while(j <= ri) {
-			merged[k++] = arr[j++];
-		}
-		for(int x = 0; x < len; x++) {
-			arr[x] = merged[x];
 		}
 	}
 	
-	public static void mergeSortHelper(int[] arr, int li, int ri) {
-		if(li < ri) {
-			int mid = (li + ri)/2;
-			mergeSortHelper(arr, li, mid);
-			mergeSortHelper(arr, mid+1, ri);
-			merge(arr, li, mid, ri);
+	public static void mergeSortHelper(int[] arr, int l, int r) {
+		if(l < r) {
+			int mid = (l + r + 1)  / 2;
+			mergeSortHelper(arr, l, mid-1);
+			mergeSortHelper(arr, mid, r);
+			merge(arr,l,mid,r);
 		}
 	}
 	
 	public static void mergeSort(int[] arr) {
 		mergeSortHelper(arr, 0, arr.length-1);
 	}
-		
+	
 	public static void main(String[] args) {
-		int[] A = {1,3,2};
-		merge(A, 0, 1, 2);
-		System.out.println(Arrays.toString(A));
-		int[] arr = {11,93,96,25,75,15,77,45,94,2,41};
-		//System.out.println(Arrays.toString(arr));
+		int[] arr = {1,3,5,7,2,4,6,2};
 		mergeSort(arr);
-		System.out.println(Arrays.toString(arr));
-		int[] arr2 = {3,2,1};
-		//System.out.println(Arrays.toString(arr2));
+		for(int x: arr) {
+			System.out.print(x + " ");
+		}
+		System.out.println();
+		Random rand = new Random();
+		int[] arr2 = new int[9];
+		for(int i = 0; i < arr2.length; i++) {
+			arr2[i] = rand.nextInt(1000)+1;
+		}
+		for(int x: arr2) {
+			System.out.print(x + " ");
+		}
+		System.out.println();
 		mergeSort(arr2);
-		System.out.println(Arrays.toString(arr2));
-		int[] arr3 = {1,2,5,3,6,7};
-		mergeSort(arr3);
-		System.out.println(Arrays.toString(arr3));
-
+		for(int x: arr2) {
+			System.out.print(x + " ");
+		}
+		
 	}
 	
 }

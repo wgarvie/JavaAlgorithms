@@ -28,6 +28,7 @@ public class Karatsuba {
 		System.out.println(karatsuba(x,y));
 		BigInteger x2 = new BigInteger("83456");
 		BigInteger y2 = new BigInteger("93421");
+		System.out.println();
 		System.out.println(karatsuba(x2,y2));
 	}
 	
