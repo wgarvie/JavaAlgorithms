@@ -1,5 +1,7 @@
 package sorts;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class QuickSort {
 
 	public static void quickSort(int[] arr) {
@@ -15,6 +17,10 @@ public class QuickSort {
 	}
 	
 	public static int selectPivot(int[] arr, int left, int right) {
+		int randPivot = ThreadLocalRandom.current().nextInt(left, right + 1);
+		int temp = arr[left];
+		arr[left] = arr[randPivot];
+		arr[randPivot] = temp;
 		return left;
 	}
 	
@@ -22,7 +28,7 @@ public class QuickSort {
 	//need to implement three-way partitioning to handle case with lots of the same number
 	//need to use insertion sort for small arrays
 	public static int partition(int[] arr, int left, int right) {
-		int pivot = left;
+		int pivot = selectPivot(arr,left,right);
 		int i = left+1;
 		boolean largerElement = false;
 		for(int j = left+1; j <= right; j++) {
