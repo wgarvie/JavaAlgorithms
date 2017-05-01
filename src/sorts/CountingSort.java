@@ -19,7 +19,6 @@ public class CountingSort {
 			B[C[A[i]]-1]  = A[i];
 			C[A[i]] -= 1;
 		}
-		A = B;
 	}
 	
 	public static void main (String[] args) {
