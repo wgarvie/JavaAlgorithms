@@ -61,6 +61,13 @@ public class MergeSort {
 		for(int x: arr2) {
 			System.out.print(x + " ");
 		}
+		System.out.println();
+		int[] arr3 = {76,32,49,92,97,57,4,88,97,44};
+		mergeSort(arr3);
+		for(int x: arr3) {
+			System.out.print(x + " ");
+		}
+		System.out.println();
 		
 	}
 	
