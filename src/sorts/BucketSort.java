@@ -1,7 +1,5 @@
 package sorts;
 
-import java.util.ArrayList;
-
 public class BucketSort {
 
 	/*public static int[] bucketSort(double[] A) {
