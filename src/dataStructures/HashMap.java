@@ -6,8 +6,14 @@ import java.util.List;
 public class HashMap<K,V> {
 	
 	private List<List<Node<K,V>>> data = new ArrayList<List<Node<K,V>>>(1000);
+
+	HashMap(int size) {
+		for(int i = 0; i < size; i++) {
+			data.add(new ArrayList<Node<K,V>>());
+		}
+	}
 	
-	static class Node<K,V> {
+	public class Node<K,V> {
 		final K key;
 		V value;
 		
@@ -30,11 +36,12 @@ public class HashMap<K,V> {
 	}
 		
 	private int hash(K x) {
-		return x.hashCode();
+		return x.hashCode() % 1000;
 	}
 	
-	public void insert(Node<K,V> node) {
-		Node<K,V> s = search(node.key);
+	public void insert(K key, V value) {
+		Node<K,V> node = new Node<K,V>(key,value);
+		Node<K,V> s = search(node.getKey());
 		if(s == null){
 			data.get(hash(node.getKey())).add(node);
 		} else {
