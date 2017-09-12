@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HashMap<K,V> {
-	
+
 	private List<List<Node<K,V>>> data = new ArrayList<List<Node<K,V>>>(1000);
 
 	HashMap(int size) {
